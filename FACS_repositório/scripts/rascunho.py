@@ -12,7 +12,10 @@ from feat.utils.io import read_feat #read csv file
 detector = Detector()
 fex = Fex()
 
-# Get the full path
-single_face_img_path = os.path.join("Input_Data")
 
-imshow(single_face_img_path)
+
+# Get the full path
+#single_face_img_path = os.path.join("Input_Data")
+
+#imshow(single_face_img_path)
+
