@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 Ask user for input, file with images/videos (accept file, png, jpg, etc.)
 Not needed if user adds the files to the input_data file 
 
 Resize if needed
 Use batch_size > 1 to choose path
+=======
+Ask user for input, either video or picture (accept file, png, jpg, etc.)
+>>>>>>> origin/main
 
 Ask user to confirm input (show image or video)
 
