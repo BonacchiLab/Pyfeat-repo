@@ -40,7 +40,7 @@ figs = single_face_prediction.plot_detections(poses=True)
 
 print(figs)
 
-single_face_prediction.to_csv("output.csv", index=False)
+#single_face_prediction.to_csv("output.csv", index=False)
 
 from feat.utils.io import read_feat
 #retirar dados
@@ -63,7 +63,7 @@ multi_face_prediction = detector.detect_image(multi_face_image_path, data_type="
 print(multi_face_prediction)
 
 #Visualizing detection results
-figs = multi_face_prediction.plot_detections(add_titles=False)
+figs2 = multi_face_prediction.plot_detections(add_titles=False)
 
 ##MULTIPLE IMAGES##
 img_list = [single_face_img_path, multi_face_image_path]
@@ -72,5 +72,5 @@ mixed_prediction = detector.detect_image(img_list, batch_size=1, data_type="imag
 mixed_prediction
 
 #Visualizing detection results
-figs = mixed_prediction.plot_detections()
-print(figs)
+figs3 = mixed_prediction.plot_detections()
+print(figs3)

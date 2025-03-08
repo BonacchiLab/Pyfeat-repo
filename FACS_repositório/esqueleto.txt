@@ -11,7 +11,7 @@ Ask user for input, either video or picture (accept file, png, jpg, etc.)
 Ask user to confirm input (show image or video)
 
 
-Run all of these for pictures or videos
+Run all of these for pictures or videos/ Create for loop for images/videos in the file 
 
 Divide into classes for image or video (It should handle more than 1 input)
 
