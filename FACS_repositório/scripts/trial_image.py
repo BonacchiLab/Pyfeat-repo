@@ -36,17 +36,17 @@ print(single_face_prediction.poses)
 print(single_face_prediction.identities)
 
 #Visualizing detection results
-figs = single_face_prediction.plot_detections(poses=True)
+#figs = single_face_prediction.plot_detections(poses=True)
 
-print(figs)
+#print(figs)
 
 #single_face_prediction.to_csv("output.csv", index=False)
 
 from feat.utils.io import read_feat
 #retirar dados
-input_prediction = read_feat("output.csv")
+#input_prediction = read_feat("output.csv")
 
-single_face_prediction.iplot_detections(bounding_boxes=True, emotions=True)
+#single_face_prediction.iplot_detections(bounding_boxes=True, emotions=True)
 
 #Visualize a face using Py-Feat’s standardized AU landmark model
 figs1 = single_face_prediction.plot_detections(faces="aus", muscles=True)
@@ -56,21 +56,21 @@ print(figs1)
 #(FEX OBJECT HAS NO ATTRIVUTE IPLOT_DETECTIONS)single_face_prediction.iplot_detections(bounding_boxes=True, emotions=True)
 
 ##MULTIPLE FACES##
-multi_face_image_path = os.path.join(test_data_dir, "multi_face.jpg")
-multi_face_prediction = detector.detect_image(multi_face_image_path, data_type="image")
+#multi_face_image_path = os.path.join(test_data_dir, "multi_face.jpg")
+#multi_face_prediction = detector.detect_image(multi_face_image_path, data_type="image")
 
 #Show results
-print(multi_face_prediction)
+#print(multi_face_prediction)
 
 #Visualizing detection results
-figs2 = multi_face_prediction.plot_detections(add_titles=False)
+#figs2 = multi_face_prediction.plot_detections(add_titles=False)
 
 ##MULTIPLE IMAGES##
-img_list = [single_face_img_path, multi_face_image_path]
+#img_list = [single_face_img_path, multi_face_image_path]
 
-mixed_prediction = detector.detect_image(img_list, batch_size=1, data_type="image")
-mixed_prediction
+#mixed_prediction = detector.detect_image(img_list, batch_size=1, data_type="image")
+#mixed_prediction
 
 #Visualizing detection results
-figs3 = mixed_prediction.plot_detections()
-print(figs3)
+#figs3 = mixed_prediction.plot_detections()
+#print(figs3)

@@ -22,9 +22,24 @@ for dirpath, _, filenames in os.walk(folder_path):
             print(f"Processing: {file_path}")
             
             # Detectar face na imagem
-            prediction = detector.detect_image(file_path, data_type="image")
+            single_face_prediction = detector.detect_image(file_path, data_type="image")
             
             # Exibir imagem
             imshow(file_path)
+#pathlib!!!
+
+
+#Exibir resultados 
+print(single_face_prediction) 
+print(single_face_prediction.head())
+print(single_face_prediction.aus) #actionunits
+print(single_face_prediction.emotions) #emotions
+print(single_face_prediction.poses) #head pose
+print(single_face_prediction.identities) 
+
+figs = single_face_prediction.plot_detections(poses=True)
+print(figs) #plot single image
+
+
 
 
