@@ -15,19 +15,10 @@ fex = Fex()
 
 # Get the full path
 folder_path = os.path.abspath("Input_Data")
-
-#for dirpath, _, filenames in os.walk(folder_path):
-#    for file in filenames:
-#        if file.lower().endswith(('.jpg', '.png', '.jpeg')):  # add videos !!!
-#            file_path = os.path.join(dirpath, file)
-#           print(f"Processing: {file_path}")           # Detectar face na imagem
-#            single_face_prediction = detector.detect_image(file_path, data_type="image")
-#            
-#            # Exibir imagem
-#            imshow(file_path)
-
 p = Path(folder_path)
 [x for x in p.iterdir() if x.is_dir()]
+
+single_face_prediction=detector.detect("Input_Data/1.jpg") #detect single face
 
 
 
