@@ -16,9 +16,10 @@ fex = Fex()
 # Get the full path
 folder_path = os.path.abspath("Input_Data")
 p = Path(folder_path)
-[x for x in p.iterdir() if x.is_dir()]
+directories = [x for x in p.iterdir() if x.is_dir()]
 
-single_face_prediction=detector.detect("Input_Data/1.jpg") #detect single face
+#detect single face 
+single_face_prediction=detector.detect_image(folder_path) 
 
 
 
