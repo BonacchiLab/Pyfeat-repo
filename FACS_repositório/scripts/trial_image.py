@@ -10,7 +10,7 @@ detector = Detector()
 
 ## Processando uma única imagem ##
 # Caminho da imagem
-single_face_img_path = r"C:\Users\Asus\Downloads\imagem_teste.png"
+single_face_img_path = r"C:\Users\Asus\Downloads\single_face.jpg"
 
 # Exibir a imagem
 imshow(single_face_img_path)
