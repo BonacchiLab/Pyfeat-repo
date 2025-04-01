@@ -23,7 +23,7 @@ test_data_dir = get_test_data_path()
 
 
 # Caminho completo para a imagem de teste
-single_face_img_path = r"C:\Users\Asus\Downloads\single_face.jpg"
+single_face_img_path = r"C:\Users\Asus\Downloads\.jpg"
 
 # Caminho do vídeo de teste
 test_video_path = r"C:\Users\Asus\Downloads\single_face.mp4"
