@@ -29,18 +29,9 @@ video_prediction = detector.detect_video(
 # Exibir as primeiras linhas da predição
 print(video_prediction.head())
 
-# Filtrar quadros específicos e plotar detecções
-#frames_to_plot = [24, 100]
-#video_prediction.query(f"frame in {frames_to_plot}").plot_detections(
-#    faceboxes=True, add_titles=True
-#)
+print(video_prediction.shape)
 
-#print(video_prediction.shape) 
-#print(video_prediction.head())
-#print(video_prediction.emotions)  # Emoções
-#print(video_prediction.aus)  # Action Units 
-#print(video_prediction.poses)
-#print(video_prediction.identities)
+print(video_prediction.identities) 
 # Plotar as emoções ao longo do vídeo
 plt.figure(figsize=(15, 10))
 axes = video_prediction.emotions.plot(title="Emoções ao longo do vídeo")
@@ -62,12 +53,14 @@ cap = cv2.VideoCapture(test_video_path)
 if not cap.isOpened():
     raise ValueError("Não foi possível abrir o vídeo.")
 
-# Loop para filtrar e imprimir os frames com AUs > 0.8 para cada emoção
+# Redefinir o índice do DataFrame para evitar ambiguidade
+video_prediction = video_prediction.reset_index()
+
+# Loop imprimir frames com AUs > 0.8 para cada emoção
 for emotion in video_prediction.emotions.columns:
     # Filtrar os frames onde o valor da emoção é maior que 0.8
     filtered_frames = video_prediction[video_prediction.emotions[emotion] > 0.8]
     
-    # Verificar se há frames que atendem ao critério
     if not filtered_frames.empty:
         print(f"Frames com {emotion} > 0.8:")
         print(filtered_frames[['frame', emotion]])  # Exibir os frames e o valor da emoção
