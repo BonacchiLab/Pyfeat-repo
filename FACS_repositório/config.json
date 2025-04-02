@@ -1,6 +1,34 @@
 {
   "data_processing": {
     "Input_data": "FACS_repositório/Input_data",
-    "Output_data": "FACS_repositório/Output_data"
+    "Output_data": "FACS_repositório/Output_data",
+    "process_type": ["image", "video"]
+  },
+  "image_processing": {
+    "image_size": [224, 224],
+    "batch_size": 32,
+    "num_epochs": 10,
+    "learning_rate": 0.001,
+    "model_type": ["resnet", "vgg", "inception"]
+  },
+  "video_processing": {
+    "frame_rate": 30,
+    "num_frames": 16,
+    "batch_size": 8,
+    "num_epochs": 5,
+    "learning_rate": 0.0001,
+    "model_type": ["3d_cnn", "lstm"]
+  },
+  "output": {
+    "model_output": "FACS_repositório/Output_data/model_output",
+    "log_file": "FACS_repositório/Output_data/log_file.txt",
+    "metrics": {
+      "accuracy": 0.95,
+      "loss": 0.05
+    }
+  },
+  "logging": {
+    "log_level": "INFO",
+    "log_file": "FACS_repositório/Output_data/log_file.txt"
   }
 }
