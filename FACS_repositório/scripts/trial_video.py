@@ -11,12 +11,8 @@ import cv2  # Biblioteca para manipulação de vídeo
 detector = Detector()
 fex = Fex()
 
-
-# Caminho do vídeo de teste
-test_data_dir = get_test_data_path()
-test_video_path = os.path.join(test_data_dir, "WolfgangLanger_Pexels.mp4")
-
-
+# Caminho para o vídeo 
+test_video_path = r"C:\Users\Asus\Downloads\video_teste.mp4"
 
 # Exibir o vídeo
 display(Video(test_video_path, embed=True))
@@ -28,10 +24,9 @@ video_prediction = detector.detect_video(
 
 # Exibir as primeiras linhas da predição
 print(video_prediction.head())
-
 print(video_prediction.shape)
+print(video_prediction.identities)
 
-print(video_prediction.identities) 
 # Plotar as emoções ao longo do vídeo
 plt.figure(figsize=(15, 10))
 axes = video_prediction.emotions.plot(title="Emoções ao longo do vídeo")
@@ -65,41 +60,37 @@ for emotion in video_prediction.emotions.columns:
         print(f"Frames com {emotion} > 0.8:")
         print(filtered_frames[['frame', emotion]])  # Exibir os frames e o valor da emoção
         
-        # Iterar sobre os frames filtrados
+        # Exibir os frames filtrados
         max_frames_to_process = 5  # Limitar o número de frames processados
         for i, frame_number in enumerate(filtered_frames['frame']):
             if i >= max_frames_to_process:
                 print("Limite de frames processados atingido.")
                 break
-
             # Verificar se o frame está dentro do alcance do vídeo
             total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
             if frame_number >= total_frames:
                 print(f"Frame {frame_number} está fora do alcance do vídeo.")
                 continue
-
             # Configurar o vídeo para o frame específico
             cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
             ret, frame = cap.read()
-            
             if not ret:
                 print(f"Não foi possível capturar o frame {frame_number}.")
                 continue
-
+            # Obter a identidade associada ao frame
+            identity = video_prediction.identities[frame_number] if frame_number in video_prediction.index else "Desconhecido"
+            
             # Converter o frame de BGR para RGB (para exibição com matplotlib)
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            
             # Exibir o frame como imagem
-            plt.figure(figsize=(10, 6))
+            plt.figure(figsize=(20, 16))
             plt.imshow(frame_rgb)
-            plt.title(f"Frame {frame_number} - {emotion} > 0.8")
+            plt.title(f"Frame {frame_number} - {emotion} > 0.8 - Identidade: {identity}")
             plt.axis('off')
             plt.pause(0.001)  # Exibir sem bloquear o loop
             plt.close('all')  # Fechar a figura para liberar memória
     else:
         print(f"Nenhum frame com {emotion} > 0.8.")
 
-# Liberar o vídeo
+# Libertar o vídeo
 cap.release()
-
-
