@@ -126,4 +126,6 @@ if "video" in process_types:
         # Libertar o vídeo
         cap.release()
 
+#descriptive= input(print("Proced to descriptive statistics? (y/n): "))
+#if descriptive == "y":
 
